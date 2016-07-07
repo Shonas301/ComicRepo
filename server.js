@@ -44,6 +44,7 @@ var SampleApp = function() {
 
         //  Local cache for static content.
         self.zcache['index.html'] = fs.readFileSync('./index.html');
+        self.zchache['comicBanner.jpg'] = fs.readFileSync('./comicBanner.jpg');
     };
 
 
@@ -103,6 +104,11 @@ var SampleApp = function() {
         self.routes['/'] = function(req, res) {
             res.setHeader('Content-Type', 'text/html');
             res.send(self.cache_get('index.html') );
+        };
+
+        self.routes['/comicBanner.jpg'] = function(req, res) {
+          res.setHeader('Content-Type', 'image/jpg');
+          res.send(self.cache_get('comicBanner.jpg'));
         };
     };
 
